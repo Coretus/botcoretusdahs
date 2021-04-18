@@ -1,0 +1,7 @@
+= Lista De Comandos Para Staff =
+
+◈ v!aceptar-verify 
+ Ejemplo de uso :: v!aceptar-verify (id del mensaje embed) (razon del aceptado)
+
+ ◈ v!rechazar-verify, :: Rechaza Solicitudes Para los Roles "Aprendiz y Experto"
+ Ejemplo de uso :: v!rechazar-verify (id del mensaje embed) (razon del aceptado)
