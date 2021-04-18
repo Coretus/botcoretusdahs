@@ -1,0 +1,237 @@
+<body class="github-font-standard" style="overflow: visible;">
+  <link href="https://modesta.alexflipnote.dev/css/modesta.css" type="text/css" rel="stylesheet">
+  <script src="https://modesta.alexflipnote.dev/js/modesta.js" type="text/javascript" charset="utf-8"></script>
+  <link href="https://modesta.alexflipnote.dev/css/twemoji.css" type="text/css" rel="stylesheet">
+  <section class="parallax-container">
+    <div class="parallax large" style="background-image: url('https://cdn.discordapp.com/attachments/814510581260353596/830514519935025202/bg.gif')"></div>
+    <div class="content">
+      <h1 class="color-text-flow"><span class="color-animate">Coretus Dashboard</span> <i class="emoji blobcat"></i> <span class="label rasberry" style="color: #fff;">BETA</span></h1>
+        <div class="buttons one-line">
+          <a href="https://discord.gg/ZgM27vFATd" target="_blank" class="btn animation orange-dropshadow">Soporte</a>
+          <a href="https://discord.com/oauth2/authorize?client_id=770104691760955442&permissions=4228775025&scope=bot" target="_blank" class="btn animation raw-purple-dropshadow">Invitacion</a>
+          <a href="/login" class="btn animation green-sea-dropshadow">Login</a>
+        </div>
+      </div>
+  </section>
+  
+  <section class="container">
+    <div class="box-container">
+      <h3 class="title emerald-text"><i class="emoji blobcatscaredcross"></i>Informacion</h3>
+        <div class="info-container">
+          <p>
+            Coretus es un bot que esta principalmente enfocado en la divercion de tu server!
+          </p>
+        </div>
+    </div>
+    <div class="statistics box-container" onload="start()">
+      <div class="flex-grid center-text">
+        <!-- <div class="col-xs">
+          <i class="fad fa-images"></i>
+          <h5></h5>
+          <p id='images' class='count' style="font-size: 20px;"></p>
+        </div> -->
+        <div class="col-xs">
+          <i class="fad fa-code"></i>
+          <h5 style="margin-bottom: 15px;">Usuarios</h5>
+          <p id="requests" class="count" style="font-size: 20px;">4774</p>
+        </div>
+        <div class="col-xs">
+          <i class="fab fa-discord"></i>
+          <h5 style="margin-bottom: 15px;"<h5>Servidores</h5>
+          <p id="members" class="count" style="font-size: 20px;">4</p>
+        </div>
+      </div>
+      <div class="flex-grid center-text">
+        <div class="col-xs">
+              <i class="fas fa-clock"></i>
+              <h5 style="margin-bottom: 15px;">Tiempo activo</h5>
+              <p id="uptime" class="count" style="font-size: 20px;">24 Horas, 5 Minutos, 4 Segundos</p>
+        </div>
+      </div>
+      </div>
+  </section>
+  <script>
+  
+    let time = {}
+    
+    
+        time["years"] = "Años"
+    
+        time["year"] = "Año"
+    
+        time["months"] = "Meses"
+    
+        time["month"] = "Mes"
+    
+        time["weeks"] = "Semanas"
+    
+        time["week"] = "Semana"
+    
+        time["days"] = "Dias"
+    
+        time["day"] = "Dia"
+    
+        time["hours"] = "Horas"
+    
+        time["hour"] = "Hora"
+    
+        time["minutes"] = "Minutos"
+    
+        time["minute"] = "Minuto"
+    
+        time["seconds"] = "Segundos"
+    
+        time["second"] = "Segundo"
+    
+    
+    let values = {};
+
+    const parse = milliseconds => {
+      if (typeof milliseconds !== 'number') {
+        throw new TypeError('Expected a number');
+      }
+
+      const roundTowardsZero = milliseconds > 0 ? Math.floor : Math.ceil;
+
+      return {
+        days: roundTowardsZero(milliseconds / 86400000),
+        hours: roundTowardsZero(milliseconds / 3600000) % 24,
+        minutes: roundTowardsZero(milliseconds / 60000) % 60,
+        seconds: roundTowardsZero(milliseconds / 1000) % 60,
+        milliseconds: roundTowardsZero(milliseconds) % 1000,
+        microseconds: roundTowardsZero(milliseconds * 1000) % 1000,
+        nanoseconds: roundTowardsZero(milliseconds * 1e6) % 1000
+      };
+    };
+
+    function timeString(timeObj) {
+
+                let data = ""
+
+                let on = false
+
+                if (timeObj.years > 0 && timeObj.years < 2) {
+                    data += `${timeObj.years} ${time.year}`;
+                    on = true
+                } else if (timeObj.years > 1) {
+                    data += `${timeObj.years} ${time.years}`;
+                    on = true;
+                }
+
+                if (timeObj.months > 0 && timeObj.months < 2) {
+                    data += `${on ? ', ' : ''}${timeObj.months} ${time.month}`;
+                    on = true;
+                } else if (timeObj.months > 1) {
+                    data += `${on ? ', ' : ''}${timeObj.months} ${time.months}`
+                    on = true;
+                }
+
+                if (timeObj.weeks > 0 && timeObj.weeks < 2) {
+                    data += `${on ? ', ' : ''}${timeObj.weeks} ${time.week}`;
+                    on = true;
+                } else if (timeObj.weeks > 1) {
+                    data += `${on ? ', ' : ''}${timeObj.weeks} ${time.weeks}`
+                    on = true;
+                }
+
+                if (timeObj.days > 0 && timeObj.days < 2) {
+                    data += `${on ? ', ' : ''}${timeObj.days} ${time.day}`;
+                    on = true;
+                } else if (timeObj.days > 1) {
+                    data += `${on ? ', ' : ''}${timeObj.days} ${time.days}`
+                    on = true;
+                }
+
+                if (timeObj.hours > 0 && timeObj.hours < 2) {
+                    data += `${on ? ', ' : ''}${timeObj.hours} ${time.hour}`;
+                    on = true;
+                } else if (timeObj.hours > 1) {
+                    data += `${on ? ', ' : ''}${timeObj.hours} ${time.hours}`
+                    on = true;
+                }
+
+                if (timeObj.minutes > 0 && timeObj.minutes < 2) {
+                    data += `${on ? ', ' : ''}${timeObj.minutes} ${time.minute}`;
+                    on = true;
+                } else if (timeObj.minutes > 1) {
+                    data += `${on ? ', ' : ''}${timeObj.minutes} ${time.minutes}`
+                    on = true;
+                }
+
+                if (timeObj.seconds > 0 && timeObj.seconds < 2) {
+                    data += `${on ? ', ' : ''}${timeObj.seconds} ${time.second}`;
+                    on = true;
+                } else if (timeObj.seconds > 1) {
+                    data += `${on ? ', ' : ''}${timeObj.seconds} ${time.seconds}`
+                    on = true;
+                }
+
+                return data
+
+            }
+
+    (function () {
+
+      let _requests = document.getElementById('requests')
+      let _members = document.getElementById('members')
+      //let _images = document.getElementById('images')
+      let _uptime = document.getElementById('uptime')
+      if(_requests && _members && _uptime) {
+
+         $('.count').each(function() {
+           values[this.id] = $(this).text()
+         })
+
+        _requests.innerHTML = "0"
+        _members.innerHTML = "0"
+        _uptime.innerHTML = "0"
+
+      }
+
+    })();
+
+    let interval = setInterval(verify, 1000)
+
+    function verify () {
+    const relativePosition = new ScrollUtility.Scroll().getRelativeElementPosition(".statistics")
+    let text = "" 
+    if (relativePosition > -1 && relativePosition < 0) {
+      clearInterval(interval)
+      loadAnimation()
+    }
+    if (relativePosition > 0 && relativePosition < 1) {
+      clearInterval(interval)
+      loadAnimation()
+      if (relativePosition > 0.4 && relativePosition < 0.6) {
+      clearInterval(interval)
+      loadAnimation()
+      }
+    }
+    if (relativePosition > 1 && relativePosition < 2) {
+      clearInterval(interval)
+      loadAnimation()
+    }
+    };
+
+    function loadAnimation() {
+      $('.count').each(function () {
+            $(this).prop('Counter',0).animate({
+                Counter: values[this.id]
+            }, {
+                duration: 4000,
+                easing: 'linear',
+                delimiter:',',
+                step: function (now) {
+                    $(this).text($(this).attr('id') !== "uptime" ? Math.ceil(now) > 1000 ? numeral(Math.ceil(now)).format('0.0a') : Math.ceil(now) : timeString(parse(now)))
+                }
+            });
+        });
+      }
+                  
+  </script>
+
+  <span style="color:white" class="center">❤️ Made with <i class="fa fa-heart" style="color:red"></i> by <a href="https://coretus.herokuapp.com">Coretus</a>
+
+
+
+</body>

@@ -1,0 +1,39 @@
+ 
+ <body class="github-font-standard" style="overflow: visible;">
+  
+  
+    <!-- Parte de arribita xD -->
+      <section class="parallax-container">
+        <div class="parallax medium" style="background-image: url('https://cdn.discordapp.com/attachments/814510581260353596/830514519935025202/bg.gif'); opacity: 0.4;"></div>
+          <div class="content">
+            <div class="box-container center-flex">
+              <div class="me unset">
+                <img draggable="false" loading="lazy" src="https://cdn.discordapp.com/avatars/{{user.id}}/{{user.avatar}}?size=1024" class="image-title">
+                <div class="unset">
+                  <h1 class="title color-text-flow"><span class="color-animate">Servidores de {{user.username}}</span></h1>
+                  
+                </div>
+            </div>
+          </div>
+          <div class="button one-line">
+            <a href="/perfil" class="btn secondary">Regresar</a>
+            <a href="/" class="btn orange">Salir</a>
+          </div>
+        </div>
+      </section>
+
+      {{#each user.guilds}}
+        
+ <div class="row">
+ <div class="col-4">
+ <img src="https://cdn.discordapp.com/icons/{{this.id}}/{{this.icon}}.png" 
+style="height: 128px;width: 128px;" class="img-fluid rounded-circle" alt="{{this.name}}">
+ </div> <div class="col"> <div class="card-body"> <h5 class="card-title" style="color: white;">{{this.name}}</h5>
+ <a href="https://discord.com/api/oauth2/authorize?client_id=543567770579894272&amp;guild_id=795687694596177970&amp;permissions=8&amp;disable_guild_select=true&amp;redirect_uri=https%3A%2F%2Fcactusfire.xyz%2Fdash&amp;response_type=code&amp;scope=bot%20guilds" class="btn btn-dark">Instalar</a>
+ </div> 
+</div> </div> </div>
+ </div> 
+<div class="col my-1"> <div class="card" style="background-color: #23272A;"> <div class="row"> <div class="col-4">
+
+      {{/each}}
+      
